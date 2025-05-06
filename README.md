@@ -1,7 +1,65 @@
-# Semi-Supervised-Learning-through-GANs
+# Semi-Supervised Learning through GANs for Melanoma Detection
 
-Imagine being a Computer Vision Engineer working on a proof of concept for a mobile app designed to identify melanomas in photos of moles, taken typically using cellphone cameras. Early detection of melanoma is crucial for a patient's long-term survival, making this project incredibly important.
+This project implements a semi-supervised learning approach using Generative Adversarial Networks (GANs) for melanoma detection in skin lesion images.
 
-Our goal is to develop a model for malignant versus benign image classification, specifically focusing on low-resolution images like those captured by cellphones. The challenge lies in having a dataset with only 200 training images—half labeled as melanomas and half as benign. Additionally, there's a vast number of unlabeled images, reflecting a common scenario in medical imaging where labeled data is scarce compared to the abundance of unlabeled data.
+## Project Structure
+```
+.
+├── data/                    # Data directory
+│   ├── labeled/            # Labeled melanoma images
+│   └── unlabeled/          # Unlabeled images
+├── models/                 # Model implementations
+│   ├── generator.py       # Generator network
+│   ├── discriminator.py   # Discriminator network
+│   └── gan.py            # GAN implementation
+├── utils/                 # Utility functions
+│   ├── data_loader.py    # Data loading and preprocessing
+│   └── visualization.py   # Visualization utilities
+├── train.py              # Training script
+├── evaluate.py           # Evaluation script
+├── requirements.txt      # Project dependencies
+└── README.md            # Project documentation
+```
 
-To overcome this hurdle and build a model that generalizes well on unseen data, we're leveraging semi-supervised learning. We'll integrate this with data augmentation techniques. Despite the limited labeled training data, we'll employ a DCGAN (Deep Convolutional GAN) to generate mole-like images and use it as a classifier to train on both labeled malignant and benign images. This approach ensures our model (Discriminator) generalizes effectively on unseen images, making it a robust tool for melanoma detection.
+## Setup and Installation
+
+1. Create a virtual environment:
+```bash
+python -m venv venv
+source venv/bin/activate  # On Windows: venv\Scripts\activate
+```
+
+2. Install dependencies:
+```bash
+pip install -r requirements.txt
+```
+
+## Usage
+
+1. Prepare your data:
+   - Place labeled melanoma images in `data/labeled/`
+   - Place unlabeled images in `data/unlabeled/`
+
+2. Train the model:
+```bash
+python train.py
+```
+
+3. Evaluate the model:
+```bash
+python evaluate.py
+```
+
+## Model Architecture
+
+The project uses a semi-supervised GAN architecture with:
+- A Generator network that generates synthetic skin lesion images
+- A Discriminator network that performs both real/fake classification and melanoma detection
+
+## Results
+
+The model achieves improved melanoma detection accuracy by leveraging both labeled and unlabeled data through the semi-supervised learning approach.
+
+## License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
