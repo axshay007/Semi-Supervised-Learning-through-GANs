@@ -2,6 +2,9 @@
 
 This project implements a semi-supervised learning approach using Generative Adversarial Networks (GANs) for melanoma detection in skin lesion images.
 
+## Author
+- [Akshay Pratap](https://github.com/axshay007)
+
 ## Project Structure
 ```
 .
